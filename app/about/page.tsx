@@ -1,6 +1,7 @@
 'use client';
+
 import React from 'react';
-// lucide-react import 제거됨
+import Link from 'next/link'; // Link 추가
 
 export default function About() {
   return (
@@ -8,8 +9,7 @@ export default function About() {
       <div className="max-w-2xl w-full animate-fadeIn">
         {/* 홈으로 돌아가기 버튼 */}
         <div className="mb-4">
-          {/* Next.js 실제 프로젝트에서는 <Link href="/">를 사용하세요. */}
-          <a
+          <Link
             href="/"
             className="inline-flex items-center text-emerald-700 font-bold hover:text-emerald-900 transition-colors group"
           >
@@ -30,7 +30,7 @@ export default function About() {
               <path d="M19 12H5" />
             </svg>
             Home
-          </a>
+          </Link>
         </div>
 
         {/* 메인 카드 */}
@@ -40,7 +40,7 @@ export default function About() {
 
           {/* 헤더 */}
           <h2 className="text-2xl font-bold text-emerald-800 mb-8 flex items-center gap-2 relative z-10">
-            {/* User 아이콘 -> SVG로 대체 */}
+            {/* User 아이콘 -> SVG */}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"

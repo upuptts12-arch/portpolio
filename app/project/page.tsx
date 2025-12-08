@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 
 export default function Project() {
   return (
@@ -11,19 +12,18 @@ export default function Project() {
           {/* 상단 장식 효과 */}
           <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-100 rounded-full blur-3xl opacity-50 -mr-10 -mt-10 pointer-events-none"></div>
 
-          {/* 홈 버튼 (우측 상단 절대 위치) */}
-          <a
+          {/* 홈 버튼 */}
+          <Link
             href="/"
             className="absolute top-6 right-6 text-emerald-600 hover:text-emerald-800 transition-colors flex items-center gap-1 group z-20"
           >
             <span className="text-sm font-bold group-hover:-translate-x-1 transition-transform">
               ← Home
             </span>
-          </a>
+          </Link>
 
           {/* 헤더 */}
           <h1 className="text-3xl font-bold text-emerald-800 mb-8 flex items-center gap-3 relative z-10">
-            {/* 폴더/프로젝트 아이콘 */}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="28"
@@ -55,7 +55,6 @@ export default function Project() {
                     <span className="font-bold text-emerald-900 text-lg group-hover:text-emerald-700">
                       clerk-app
                     </span>
-                    {/* 외부 링크 아이콘 */}
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="18"

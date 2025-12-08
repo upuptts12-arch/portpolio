@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 
 export default function Team() {
   const members = [
@@ -8,7 +9,7 @@ export default function Team() {
     { name: '오은채', url: 'https://github.com/euon05/' },
     { name: '이예빈', url: 'https://github.com/yebeen547' },
     { name: '정효민', url: 'https://github.com/EHWkddl' },
-    { name: '한지원', url: '' }, // 추가된 멤버 (URL 없음)
+    { name: '한지원', url: '' }, // URL 없음
   ];
 
   return (
@@ -19,14 +20,14 @@ export default function Team() {
           <div className="absolute top-0 right-0 w-40 h-40 bg-emerald-100 rounded-full blur-3xl opacity-50 -mr-10 -mt-10 pointer-events-none"></div>
 
           {/* 홈 버튼 */}
-          <a
+          <Link
             href="/"
             className="absolute top-6 right-6 text-emerald-600 hover:text-emerald-800 transition-colors flex items-center gap-1 group z-20"
           >
             <span className="text-sm font-bold group-hover:-translate-x-1 transition-transform">
               ← Home
             </span>
-          </a>
+          </Link>
 
           {/* 헤더 */}
           <h1 className="text-3xl font-bold text-emerald-800 mb-2 flex items-center gap-3 relative z-10">
@@ -72,7 +73,7 @@ export default function Team() {
                     href={member.url || '#'}
                     target={member.url ? '_blank' : undefined}
                     rel={member.url ? 'noopener noreferrer' : undefined}
-                    onClick={(e) => !member.url && e.preventDefault()} // URL 없으면 클릭 방지
+                    onClick={(e) => !member.url && e.preventDefault()}
                     className={`flex items-center justify-between p-3 rounded-xl bg-white border border-emerald-50 transition-all duration-300 group shadow-sm ${
                       member.url
                         ? 'hover:border-emerald-200 hover:bg-emerald-50/50 hover:shadow cursor-pointer'
