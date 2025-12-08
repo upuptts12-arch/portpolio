@@ -1,103 +1,100 @@
-import Image from "next/image";
+'use client';
+
+import Link from 'next/link';
+import { useUser, SignInButton, SignOutButton } from '@clerk/nextjs';
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const { isSignedIn } = useUser();
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  return (
+    <main className="min-h-screen bg-gradient-to-br from-green-50 via-amber-50 to-emerald-100 flex items-center justify-center p-6 relative overflow-hidden">
+      {/* 로그인/로그아웃 버튼 - 화면 오른쪽 상단 */}
+      <div className="absolute top-4 right-4">
+        {isSignedIn ? (
+          <SignOutButton>
+            <button className="px-3 py-1 bg-gray-400 text-white rounded hover:bg-gray-500 transition text-sm">
+              로그아웃
+            </button>
+          </SignOutButton>
+        ) : (
+          <SignInButton>
+            <button className="px-3 py-1 bg-gray-400 text-white rounded hover:bg-gray-500 transition text-sm">
+              로그인
+            </button>
+          </SignInButton>
+        )}
+      </div>
+
+      {/* 배경 장식 */}
+      <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
+        <div className="absolute w-72 h-72 bg-white/20 rounded-full -top-20 -left-20 animate-pulseSlow"></div>
+        <div className="absolute w-56 h-56 bg-white/10 rounded-full -bottom-16 right-10 animate-pulseSlow"></div>
+      </div>
+
+      {/* 프로필 카드 */}
+      <div className="bg-white/80 backdrop-blur-md shadow-lg rounded-3xl p-10 max-w-md w-full text-center border border-emerald-100 relative z-10">
+        {/* 프로필 */}
+        <div className="flex flex-col items-center space-y-3">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/847/847969.png"
+            alt="profile"
+            className="w-28 h-28 rounded-full border-4 border-emerald-200 shadow-sm"
+          />
+          <h1 className="text-3xl font-bold text-emerald-700">
+            김정서의 포트폴리오
+          </h1>
+          <p className="text-gray-600 text-sm">정보보호학과 24학번</p>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+
+        {/* 메뉴 버튼 */}
+        <div className="mt-8 flex flex-col gap-3">
+          <Link
+            href="/about"
+            className="block px-4 py-2 bg-emerald-400 text-white rounded-full shadow-md hover:bg-emerald-500 transition text-sm"
+          >
+            📖 About
+          </Link>
+          <Link
+            href="/project"
+            className="block px-4 py-2 bg-emerald-400 text-white rounded-full shadow-md hover:bg-emerald-500 transition text-sm"
+          >
+            💻 Project
+          </Link>
+          <Link
+            href="/team"
+            className="block px-4 py-2 bg-emerald-400 text-white rounded-full shadow-md hover:bg-emerald-500 transition text-sm"
+          >
+            👥 Team
+          </Link>
+          <Link
+            href="/contact"
+            className="block px-4 py-2 bg-emerald-400 text-white rounded-full shadow-md hover:bg-emerald-500 transition text-sm"
+          >
+            📬 Contact
+          </Link>
+        </div>
+
+        {/* 푸터 */}
+        <p className="text-xs text-gray-400 mt-6">
+          © 2025 Kim Jungseo | Portfolio
+        </p>
+      </div>
+
+      {/* Tailwind 애니메이션 */}
+      <style jsx>{`
+        @keyframes pulseSlow {
+          0%,
+          100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(10px);
+          }
+        }
+        .animate-pulseSlow {
+          animation: pulseSlow 10s ease-in-out infinite;
+        }
+      `}</style>
+    </main>
   );
 }
